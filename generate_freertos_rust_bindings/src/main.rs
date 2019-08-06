@@ -39,9 +39,9 @@ unsafe extern "C" fn blink_task(context: *mut c_void) {
     // for this application's specific FreeRTOSConfig.
     // Anyways, at a 250Hz tick, 250 ticks should ~= 1 second.
     loop {
-        gpiob.odr.write(|w| w.odr3().set_bit());
+        gpiob.odr.write(|w| w.odr14().set_bit());
         vTaskDelay(250);
-        gpiob.odr.write(|w| w.odr3().clear_bit());
+        gpiob.odr.write(|w| w.odr14().clear_bit());
         vTaskDelay(250);
     }
 }
@@ -53,10 +53,10 @@ fn main() -> ! {
     let p = stm32::Peripherals::take().unwrap();
     let rcc = p.RCC;
     let mut gpiob = p.GPIOB;
-    // Set up GPIO pin B3 as push-pull output.
+    // Set up GPIO pin B14 as push-pull output.
     rcc.ahb2enr.modify(|_,w| w.gpioben().set_bit());
-    gpiob.moder.write(|w| w.moder3().output());
-    gpiob.otyper.write(|w| w.ot3().clear_bit());
+    gpiob.moder.write(|w| w.moder14().output());
+    gpiob.otyper.write(|w| w.ot14().clear_bit());
 
     // Create the 'blinking LED' task.
     let gpiob_ref: *mut c_void = &mut gpiob as *mut _ as *mut c_void;

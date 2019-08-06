@@ -1,6 +1,6 @@
 # Overview
 
-Test project to try generating FreeRTOS bindings for Rust. Targets an STM32L031K6 'Nucleo-32' board, to have a single easy test platform.
+Test project to try generating FreeRTOS bindings for Rust. Targets an STM32L475VG 'IoT Node' board, to have a single easy test platform.
 
 It's a little messy right now and the build process is a little fragmented, but it looks like the basic idea can work.
 

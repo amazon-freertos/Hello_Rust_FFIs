@@ -1,0 +1,30 @@
+[package]
+name = "freertos_interop_test"
+version = "0.1.0"
+authors = ["WRR"]
+edition = "2018"
+build = "build.rs"
+
+[dependencies]
+cortex-m = "0.5.8"
+cortex-m-rt = "0.6.5"
+panic-halt = "0.2.0"
+panic-abort = "0.3.1"
+panic-semihosting = "0.5.2"
+cty = "0.2.0"
+cstr_core = "0.1.2"
+
+# Local STM32 Peripheral Access Crates.
+#[dependencies.stm32_pac]
+#path = "../../stm32_pac"
+#version = "0.0.1"
+
+# STM32L4xx Peripheral Access Crate from crates.io
+[dependencies.stm32l4]
+version = "0.8.0"
+features = ["stm32l4x5", "rt"]
+
+# Define which board to build for.
+#[features]
+#default = [ "L031K6_NUCLEO" ]
+#L031K6_NUCLEO = [ "stm32_pac/stm32l0x1_rt" ]
